@@ -26,8 +26,8 @@ builder.Services.AddMvc(config =>
     //retorna o status de resposta que o objeto aceita
     config.ReturnHttpNotAcceptable = true;
     // adiciona o formato de resposta(Saida) em Xml
-    config.OutputFormatters.Add(new XmlSerializerOutputFormatter());
-    config.InputFormatters.Add(new XmlSerializerInputFormatter(config));
+    config.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter());
+    config.InputFormatters.Add(new XmlDataContractSerializerInputFormatter(config));
 });
 
 builder.Services.AddAuthentication(x =>

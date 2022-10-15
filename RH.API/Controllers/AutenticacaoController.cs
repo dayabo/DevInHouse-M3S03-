@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using RH.API.DTOs;
 using RH.API.Services;
 
@@ -19,17 +21,67 @@ namespace RH.API.Controllers
 
         // POST api/<AutenticacaoController>
         [HttpPost]
-        [Route ("login")]
+        [Route("login")]
         public IActionResult Login([FromBody] LoginDTO login)
         {
-           var user =  _funcionarioService.Logar(login);
+            var user = _funcionarioService.Logar(login);
+
+            var listRefresh = TokenService.GetAllRefreshToken();
+            var contentUserName = listRefresh.Any(n =>  n.Item1 == user.Nome);
+            
 
             if (user == null) return Unauthorized();
-            var token = TokenService.GeraToken(user);
 
-            return Ok(token);
+            if (contentUserName)
+            {
+                var newToken = TokenService.GeraToken(user);
+                var newRefreshToken = TokenService.GenerateRefreshToken();
+                TokenService.DeleteRefreshToken(user.Nome, TokenService.GetRefreshToken(user.Nome));
+                TokenService.SaveRefreshToken(user.Nome, newRefreshToken);
+
+                return Ok(new
+                {
+                    newToken,
+                    newRefreshToken
+                });
+            }
+
+            var token = TokenService.GeraToken(user);
+            var refreshToken = TokenService.GenerateRefreshToken();
+
+            TokenService.SaveRefreshToken(user.Nome, refreshToken);
+
+            return Ok(new { token, refreshToken });
         }
 
-       
+
+        [HttpPost]
+        [Route("refresh")]
+        [AllowAnonymous]
+        public IActionResult Refresh(
+            [FromQuery] string token,
+            [FromQuery] string refreshToken
+        )
+        {
+            var principal = TokenService.GetPrincipalFromExpiredToken(token);
+            var username = principal.Identity.Name;
+            var savedRefreshToken = TokenService.GetRefreshToken(username);
+
+            if (savedRefreshToken != refreshToken)
+                throw new SecurityTokenException("Invalid Token");
+
+            var newToken = TokenService.GeraToken(principal.Claims);
+            var newRefreshToken = TokenService.GenerateRefreshToken();
+            TokenService.DeleteRefreshToken(username, refreshToken);
+            TokenService.SaveRefreshToken(username, newRefreshToken);
+
+            return Ok(new
+            {
+                newToken,
+                newRefreshToken
+            });
+        }
+
+    
     }
 }

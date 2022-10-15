@@ -81,13 +81,5 @@ namespace RH.API.Controllers
             return Ok(_funcionarioService.ListarFuncionarios());
         }
 
-
-       /* [HttpGet("todos")]
-        public IActionResult GetListarFuncionarios()
-        {
-
-            return Ok(new FuncionarioViewModel { nome ="teste"});
-        }*/
-
     }
 }

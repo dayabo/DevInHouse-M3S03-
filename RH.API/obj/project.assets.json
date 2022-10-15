@@ -4800,11 +4800,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dayan\\OneDrive\\Área de Trabalho\\DevinHouse[M2S02]\\RH\\RH.API\\RH.API.csproj",
+      "projectUniqueName": "C:\\Users\\dayan\\OneDrive\\Área de Trabalho\\DevInHouse-M3S03-\\RH.API\\RH.API.csproj",
       "projectName": "RH.API",
-      "projectPath": "C:\\Users\\dayan\\OneDrive\\Área de Trabalho\\DevinHouse[M2S02]\\RH\\RH.API\\RH.API.csproj",
+      "projectPath": "C:\\Users\\dayan\\OneDrive\\Área de Trabalho\\DevInHouse-M3S03-\\RH.API\\RH.API.csproj",
       "packagesPath": "C:\\Users\\dayan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dayan\\OneDrive\\Área de Trabalho\\DevinHouse[M2S02]\\RH\\RH.API\\obj\\",
+      "outputPath": "C:\\Users\\dayan\\OneDrive\\Área de Trabalho\\DevInHouse-M3S03-\\RH.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

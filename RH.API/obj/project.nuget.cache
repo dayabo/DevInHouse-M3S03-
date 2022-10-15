@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DMAHbt3m1N1DdhVUkQx23uuHSMNCCIRRmifi877zWmf7m65TSdwL11Womvg0hIGaTxXmRPZq36xXXJg429ZUkQ==",
+  "dgSpecHash": "ut7AMXToCTxyPBQTH4PmSFuLHyA0dLFxDdPsmCndqwdxrNdD3fQn8slSN3lrmQAte5f78wYZqGW2ATRU3h30pQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dayan\\OneDrive\\Área de Trabalho\\DevinHouse[M2S02]\\RH\\RH.API\\RH.API.csproj",
+  "projectFilePath": "C:\\Users\\dayan\\OneDrive\\Área de Trabalho\\DevInHouse-M3S03-\\RH.API\\RH.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dayan\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\dayan\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
